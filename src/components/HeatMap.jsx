@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import "leaflet/dist/leaflet.css";
-import compass from "../assets/compass2.png";
+// import compass from "../assets/compass2.png";
 
 const HeatMap = ({
   mapType = "vulnerability_index",
@@ -30,8 +30,12 @@ const HeatMap = ({
       "/adaptive_capacity_index_water_sewer_infrastructure.html",
   };
 
-  // Health facilities special case (kept from your code)
-  const healthFacilitiesMap = "/exposure_index_health_facilities.html";
+  const healthFacilitiesMap = {
+    exposure_index: "/exposure_index_health_facilities.html",
+    vulnerability_index: "/vulnerability_index_and_health_facilities.html",
+    sensitivity_index: "/sensitivity_index_and_health_facilities.html",
+    adaptive_capacity_index: "/adaptive_capacity_index_and_health_facilities.html",
+  };
 
   const HRIIndex2030 = "/vulnerability_index_v2_satellite.html";
   const HRIIndex2035 = "/vulnerability_index_2035_satellite.html";
@@ -82,8 +86,8 @@ const HeatMap = ({
 
     if (selectedLayer === "Health Facilities") {
       return {
-        src: healthFacilitiesMap,
-        title: "Health Facilities Map",
+        src: healthFacilitiesMap[type] || baseMaps[type],
+        title: "Health Facilities • " + (mapName[type] || "Heat Map"),
       };
     }
 
