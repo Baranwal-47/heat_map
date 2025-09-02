@@ -3,6 +3,7 @@ import undp_logo from '../assets/undp_logo.png';
 import bihar_government_logo from '../assets/bihar_government.png';
 import bsdma_logo from '../assets/bihardss.png';
 import ipf_global_logo from '../assets/undp.png';
+import { Link } from 'react-router-dom';
 
 const Footer1 = () => {
   return (
@@ -21,7 +22,7 @@ const Footer1 = () => {
             </span>
             <span>Helpline : 0612-2547232</span>
             <br />
-            <span className='text-xs text-gray-600 text-center sm:text-left'> <a href="/termsandconditions">Terms and Conditions</a></span>
+            <span className='text-xs text-gray-600 text-center sm:text-left'> <Link to="/termsandconditions">Terms and Conditions</Link></span>
           </div>
 
           {/* Organization Logos */}

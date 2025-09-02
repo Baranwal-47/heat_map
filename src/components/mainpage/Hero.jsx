@@ -1,6 +1,7 @@
 // Hero.jsx
 import React from "react";
 import heroImg from "../../assets/mahatma-gandhi-setu-patna.jpg";
+import { Link } from "react-router-dom";
 
 export default function Hero() {
   return (
@@ -27,12 +28,12 @@ export default function Hero() {
           heat.
         </p>
         <div className="mt-8">
-          <a
-            href="/analytics"
+          <Link
+            to="/analytics"
             className="inline-flex items-center rounded-md bg-[#004275] px-7 py-4 text-sm font-semibold text-white shadow hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
           >
             EXPLORE THE HEAT ACTION PLAN
-          </a>
+          </Link>
         </div>
       </div>
     </section>
