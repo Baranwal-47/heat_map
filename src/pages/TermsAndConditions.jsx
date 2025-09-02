@@ -11,7 +11,7 @@ const TermsAndConditions = () => {
 
       <section className="mb-6">
         <p>
-          IPE Global Limited (“we”, “us”, “our”, IPE Global) is committed to protecting the privacy and personal data of users interacting with the Climate Readiness Index (CRI) Dashboard. This Privacy Policy outlines how we collect, use, store, and protect any data that users may share while using the CRI Dashboard and its associated features, including the Decision Support System (DSS).
+          IPE Global Limited (“we”, “us”, “our”, IPE Global) is committed to protecting the privacy and personal data of users interacting with the HAP Patna Dashboard.
         </p>
       </section>
 

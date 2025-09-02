@@ -6,6 +6,7 @@ import Explore from '../components/mainpage/Explore'
 import KeyObjectives from '../components/mainpage/KeyObjectives'
 import Footer1 from '../components/Footer1'
 import HowToUse from '../components/mainpage/HowToUse'
+import FAQSection from '../components/mainpage/FAQSection'
 
 const Homepage = () => {
   return (
@@ -16,6 +17,7 @@ const Homepage = () => {
       <Explore />
       <KeyObjectives />
       <HowToUse />
+      <FAQSection />
       <Footer1 />
       
     </div>
