@@ -6,7 +6,7 @@ const TermsAndConditions = () => {
   return (
     <div>
         <Header1 />
-      <div className="max-w-5xl mx-auto p-6 text-gray-800 mb-8">
+      <div className="max-w-5xl mx-auto p-6 text-gray-800 mb-8 font-montserrat">
       <h1 className="text-3xl font-bold mb-10 mt-6 text-center">Privacy Policy for Heat Action Plan(HAP) Patna</h1>
 
       <section className="mb-6">
