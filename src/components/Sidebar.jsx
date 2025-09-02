@@ -370,7 +370,7 @@ const Sidebar = ({
     setYear(yearValue);
     // Clear any selected Heat Risk Assessment
     if (typeof setMap === "function") {
-      setMap(null); // or setMap("") - whatever represents "no selection"
+      setMap(""); // or setMap("") - whatever represents "no selection"
     }
   };
 

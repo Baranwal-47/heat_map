@@ -50,55 +50,11 @@ const HeatMap = ({
     adaptive_capacity_index: "Adaptive Capacity Map",
   };
 
-//       const PROJECTION_YEARS = new Set([2030, 2035, 2040, 2050]);
-// const INDEX_TYPES = new Set([
-//   "vulnerability_index",
-// ]);
 
-// const shouldHidePopulationDensity =
-//   PROJECTION_YEARS.has(Number(selectedYear)) && INDEX_TYPES.has(mapType);
-
-  // Compute src and title once per prop change
   const { src, title } = useMemo(() => {
     const type = mapType in baseMaps ? mapType : "vulnerability_index";
-    const isProjectionYear = ["2030", "2035", "2040", "2050"].includes(String(selectedYear));
 
-
-
-  const forceBaseMapForProjection =
-    isProjectionYear &&
-    ["exposure_index", "sensitivity_index", "adaptive_capacity_index"].includes(type);
-
-    // Selected layer Routing
-    if (selectedLayer === "Roads") {
-      return {
-        src: roadsMaps[type] || baseMaps[type],
-        title: "Roads • " + (mapName[type] || "Heat Map"),
-      };
-    }
-
-    if (selectedLayer === "Water and Sewer Infrastructure") {
-      return {
-        src: waterSewerMaps[type] || baseMaps[type],
-        title: "Water & Sewer • " + (mapName[type] || "Heat Map"),
-      };
-    }
-
-    if (selectedLayer === "Health Facilities") {
-      return {
-        src: healthFacilitiesMap[type] || baseMaps[type],
-        title: "Health Facilities • " + (mapName[type] || "Heat Map"),
-      };
-    }
-
-      if (forceBaseMapForProjection) {
-    return {
-      src: baseMaps[type],
-      title: mapName[type] || "Heat Map",
-    };
-  }
-
-    if (selectedYear === "2030") {
+     if (selectedYear === "2030") {
       return {
         src: HRIIndex2030,
         title: "HRI for 2030 Scenario",
@@ -125,6 +81,45 @@ const HeatMap = ({
         title: "HRI for 2050 Scenario",
       };
     }
+    
+    const isProjectionYear = ["2030", "2035", "2040", "2050"].includes(String(selectedYear));
+
+
+
+  const forceBaseMapForProjection =
+    isProjectionYear &&
+    ["exposure_index", "sensitivity_index", "adaptive_capacity_index"].includes(type);
+
+    // Selected layer Routing
+    if (selectedLayer === "Roads") {
+      return {
+        src: roadsMaps[type] || baseMaps[type],
+        title:  (mapName[type] || "Heat Map"),
+      };
+    }
+
+    if (selectedLayer === "Water and Sewer Infrastructure") {
+      return {
+        src: waterSewerMaps[type] || baseMaps[type],
+        title:  (mapName[type] || "Heat Map"),
+      };
+    }
+
+    if (selectedLayer === "Health Facilities") {
+      return {
+        src: healthFacilitiesMap[type] || baseMaps[type],
+        title: (mapName[type] || "Heat Map"),
+      };
+    }
+
+      if (forceBaseMapForProjection) {
+    return {
+      src: baseMaps[type],
+      title: mapName[type] || "Heat Map",
+    };
+  }
+
+   
 
     // Default to the base heat index map
     return {

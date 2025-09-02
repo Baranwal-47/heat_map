@@ -52,15 +52,18 @@ export default function Dashboard({
   selectedYear,
 }) {
   const [weather, setWeather] = useState(null);
+  const [forecast, setForecast] = useState([]); // Add this for forecast
   const [lastUpdated, setLastUpdated] = useState(null);
   const [loading, setLoading] = useState(false);
 
   // Get API key from environment
   const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
-  // Fetch live weather
+  // Fetch live weather AND forecast
   useEffect(() => {
     setLoading(true);
+
+    // Current weather (your existing code)
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=Patna,IN&units=metric&appid=${API_KEY}`
     )
@@ -74,14 +77,47 @@ export default function Dashboard({
           });
           setLastUpdated(new Date());
         }
+      })
+      .catch((error) => console.error("Current weather error:", error));
+
+    // Add forecast fetch
+    fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?q=Patna,IN&units=metric&appid=${API_KEY}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.list) {
+          const dailyForecast = data.list
+            .filter((item, index) => index % 8 === 0)
+            .slice(0, 5)
+            .map((item) => ({
+              day: new Date(item.dt * 1000).toLocaleDateString("en-US", {
+                weekday: "short",
+                day: "2-digit",
+                month: "short",
+              }),
+              icon: item.weather[0].icon,
+              description: item.weather[0].main, // This gives you "Thunderstorm", "Rain", etc.
+            }));
+          setForecast(dailyForecast);
+        }
         setLoading(false);
       })
-      .catch(() => setLoading(false));
+      .catch((error) => {
+        console.error("Forecast error:", error);
+        setLoading(false);
+      });
   }, [API_KEY]);
 
-  const SelectedDonutChart = mapType? donutChartMap[mapType] : donutChartMap["vulnerability_index"];
-  const SelectedPopulationChart = mapType? populationChartMap[mapType]: populationChartMap["vulnerability_index"] ;
-  const SelectedBlocksChart = mapType ? blocksChartMap[mapType] : blocksChartMap["vulnerability_index"];
+  const SelectedDonutChart = mapType
+    ? donutChartMap[mapType]
+    : donutChartMap["vulnerability_index"];
+  const SelectedPopulationChart = mapType
+    ? populationChartMap[mapType]
+    : populationChartMap["vulnerability_index"];
+  const SelectedBlocksChart = mapType
+    ? blocksChartMap[mapType]
+    : blocksChartMap["vulnerability_index"];
 
   const tempColorClass = (t) => {
     if (t == null || Number.isNaN(Number(t))) return "text-gray-500";
@@ -104,9 +140,9 @@ export default function Dashboard({
           <div className="flex flex-row items-center gap-6 mb-3">
             {/* left temp/card */}
             <div className="flex items-center gap-2">
-              <div className="relative group flex flex-col items-center px-3 py-1 border-r-1 border-gray-400 bg-white cursor-pointer">
+              <div className="relative group flex flex-col items-center px-3 py-0.5 border-r-1 border-gray-400 bg-white cursor-pointer">
                 <span
-                  className={`text-xl font-bold ${tempColorClass(
+                  className={`text-lg font-bold ${tempColorClass(
                     weather?.temp
                   )}`}
                 >
@@ -158,23 +194,31 @@ export default function Dashboard({
             </div>
 
             {/* center alert */}
-            <div className="flex-1 bg-yellow-100 px-5 py-2 rounded-lg flex items-center gap-2 border-none">
-              <span className="text-yellow-600 text-lg font-semibold">
-                <svg
-                  className="inline-block h-5 w-5 mr-2"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4.5c-.77-.833-2.694-.833-3.464 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z"
-                  />
-                </svg>
-                {`Yellow Alert: Heavy Rainfall Predicted Across Several Blocks on 29 Aug`}
-              </span>
+            <div className="flex-1  px-5 py-0 rounded-lg flex items-center gap-0 border-none">
+              {/* Add forecast display */}
+              {forecast.length > 0 && (
+                <div className="flex justify-between items-center w-full mx-auto rounded-lg ">
+                  {forecast.map((day, index) => (
+                    <div key={index} className="text-center flex-1 mx-2">
+                      <div className="text-[10px] text-gray-800 mb-0.25">
+                        {day.day}
+                      </div>
+
+                      {/* Weather Icon */}
+                      <img
+                        src={`https://openweathermap.org/img/wn/${day.icon}@2x.png`}
+                        alt={day.description}
+                        className="mx-auto w-8 h-8 mb-0.25"
+                      />
+
+                      {/* Weather Description */}
+                      <div className="text-xs text-gray-700 font-medium">
+                        {day.description}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
           <div className="bg-white rounded-lg shadow ">
