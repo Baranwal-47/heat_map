@@ -3,7 +3,7 @@ import HAP_Image from '../../assets/HAP_Screen.png'
 
 export default function AboutHap() {
   return (
-    <section className="relative bg-gradient-to-tr from-indigo-50/70 via-white to-pink-50/70">
+    <section className="relative bg-gradient-to-tr from-indigo-50/70 via-white to-pink-50/70 font-montserrat">
       <div className="mx-auto max-w-4xl  py-16 sm:py-20 text-gray-800">
         {/* Pill label */}
         <div className="mb-4 flex justify-center">

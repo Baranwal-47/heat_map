@@ -6,7 +6,7 @@ import capacityIcon from "../../assets/flight (2).png";
 
 export default function KeyObjectives() {
   return (
-    <section className="relative bg-white">
+    <section className="relative bg-white font-montserrat">
       <div className="mx-auto max-w-6xl px-6 py-14 sm:py-16">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
           {/* Left: photo on rings background */}

@@ -1,7 +1,7 @@
 // ExploreCTA.jsx
 export default function Explore() {
   return (
-    <section className="bg-[#004275] mt-24 ">
+    <section className="bg-[#004275] mt-24 font-montserrat">
       <div className="mx-auto max-w-5xl px-6 py-10 sm:py-16">
         <div className="flex flex-col items-center text-center gap-5">
           <h2 className="text-white text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight">

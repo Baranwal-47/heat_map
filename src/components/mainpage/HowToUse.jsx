@@ -34,7 +34,7 @@ const steps = [
 
 export default function HowToUse() {
   return (
-    <section className="bg-slate-50">
+    <section className="bg-slate-50 font-montserrat">
       <div className="mx-auto max-w-6xl px-6 py-14 sm:py-16">
         {/* Heading */}
         <h2 className="text-center text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900">

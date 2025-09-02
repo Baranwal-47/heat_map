@@ -4,7 +4,7 @@ import heroImg from "../../assets/mahatma-gandhi-setu-patna.jpg";
 
 export default function Hero() {
   return (
-    <section className="relative isolate w-full min-h-[90vh] overflow-hidden">
+    <section className="relative isolate w-full min-h-[90vh] overflow-hidden font-montserrat">
       {/* Background image */}
       <div
         className="absolute inset-0 -z-20 bg-cover bg-center"
