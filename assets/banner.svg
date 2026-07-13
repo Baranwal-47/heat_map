@@ -1,0 +1,57 @@
+<svg width="880" height="200" viewBox="0 0 880 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="55%" stop-color="#131a24"/>
+      <stop offset="100%" stop-color="#1a1210"/>
+    </linearGradient>
+    <linearGradient id="rule" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f85149"/>
+      <stop offset="45%" stop-color="#d29922"/>
+      <stop offset="100%" stop-color="#3fb950"/>
+    </linearGradient>
+    <linearGradient id="heat" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#f8e3a1"/>
+      <stop offset="50%" stop-color="#f3a05e"/>
+      <stop offset="100%" stop-color="#f26963"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="880" height="200" fill="url(#bg)"/>
+
+  <!-- choropleth motif: abstract block polygons, right side -->
+  <g opacity="0.5" transform="translate(662,34) scale(0.82)">
+    <polygon points="0,58 34,38 72,52 66,92 28,102 4,86" fill="#f26963" stroke="#0d1117" stroke-width="2"/>
+    <polygon points="72,52 118,30 156,44 148,84 100,96 66,92" fill="#f3c26e" stroke="#0d1117" stroke-width="2"/>
+    <polygon points="156,44 198,32 232,54 220,90 176,98 148,84" fill="#f26963" stroke="#0d1117" stroke-width="2"/>
+    <polygon points="28,102 66,92 100,96 94,134 48,142 18,126" fill="#f1c2aa" stroke="#0d1117" stroke-width="2"/>
+    <polygon points="100,96 148,84 176,98 168,132 118,140 94,134" fill="#f26963" stroke="#0d1117" stroke-width="2"/>
+    <polygon points="176,98 220,90 244,108 232,136 190,144 168,132" fill="#f3c26e" stroke="#0d1117" stroke-width="2"/>
+    <!-- river band -->
+    <path d="M-6,34 C60,18 150,26 236,6 L236,20 C152,40 62,32 -6,48 Z" fill="#58a6ff" opacity="0.18"/>
+    <!-- location pin -->
+    <g transform="translate(118,54)">
+      <path d="M0,-16 C-7,-16 -12,-11 -12,-4 C-12,4 0,16 0,16 C0,16 12,4 12,-4 C12,-11 7,-16 0,-16 Z" fill="#e6edf3"/>
+      <circle cx="0" cy="-4" r="4.5" fill="#f26963"/>
+    </g>
+  </g>
+
+  <!-- thermometer motif, far right -->
+  <g transform="translate(836,38)" opacity="0.9">
+    <rect x="-6" y="0" width="12" height="92" rx="6" fill="#161b22" stroke="#30363d"/>
+    <rect x="-3" y="34" width="6" height="58" rx="3" fill="url(#heat)"/>
+    <circle cx="0" cy="104" r="14" fill="#f26963"/>
+    <circle cx="0" cy="104" r="8" fill="#f8e3a1" opacity="0.55"/>
+  </g>
+
+  <!-- text -->
+  <text x="44" y="66" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="34" font-weight="700" fill="#e6edf3">Model Heat Action Plan <tspan fill="#f26963">·</tspan> Patna</text>
+  <text x="44" y="96" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" fill="#8b949e">23 blocks × 4 heat indices × 5 climate scenarios — 30 pre-rendered GIS maps</text>
+
+  <rect x="44" y="112" width="500" height="3" rx="1.5" fill="url(#rule)"/>
+
+  <text x="44" y="146" font-family="Cascadia Mono, Consolas, monospace" font-size="14">
+    <tspan fill="#79c0ff">shapefiles + OSM</tspan><tspan fill="#6e7681"> → </tspan><tspan fill="#d2a8ff">GeoPandas / OSMnx</tspan><tspan fill="#6e7681"> → </tspan><tspan fill="#e3b341">Folium maps</tspan><tspan fill="#6e7681"> → </tspan><tspan fill="#56d364">React + Leaflet</tspan>
+  </text>
+  <text x="44" y="172" font-family="Cascadia Mono, Consolas, monospace" font-size="13" fill="#6e7681">for BSDMA · in collaboration with UNDP · live at heat-map-three.vercel.app</text>
+</svg>
