@@ -35,6 +35,10 @@ The core idea: **all geospatial computation happens offline**. Shapefiles and Op
 |---|---|
 | ![HRI 2050 projection](assets/scenario-2050.png) | ![Patient data 2024 with hospital locations](assets/patient-data-2024.png) |
 
+| Block drill-down (Patna Sadar) | Bilingual — हिन्दी |
+|---|---|
+| ![Block drill-down](assets/block-drilldown.png) | ![Hindi translation](assets/hindi-translation.png) |
+
 ## By the numbers
 
 | Metric | Value |
@@ -135,6 +139,8 @@ Folium doesn't ship a normal/satellite radio switcher or styled block toggles, s
 `HeatMap.jsx` resolves the map file with a priority cascade: scenario year (2030/2035/2040/2050 force the corresponding HRI projection map) → overlay layer (roads / water-sewer / health facilities pick the overlay variant) → base index map. Projection years also swap the legend from High/Medium/Low to Very-High-Urban / High-Peri-Urban / Moderate-Rural, matching how the projected indices were classified.
 
 </details>
+
+![Public landing page](assets/landing.png)
 
 Natural extensions: dynamic GeoJSON serving with vector tiles for live data updates, and code-splitting the chart bundle.
 
